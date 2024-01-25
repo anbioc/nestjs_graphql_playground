@@ -1,0 +1,37 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type UserSetting {
+  userId: Int!
+  receiveNotif: Boolean!
+  email: Boolean!
+}
+
+type User {
+  id: Int!
+  username: String!
+  displayname: String
+  settings: UserSetting
+}
+
+type Query {
+  userById(id: Int!): User
+  users(name: String!): [User!]
+}
+
+type Mutation {
+  createUser(userInput: UserInput!): User!
+  createUserSetting(settingType: settingsInput!): UserSetting!
+}
+
+input UserInput {
+  username: String!
+  displayname: String
+}
+
+input settingsInput {
+  userId: Int!
+  email: Boolean = false
+  receiveNotif: Boolean = false
+}
